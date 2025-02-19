@@ -1,0 +1,756 @@
+﻿<!DOCTYPE html>
+
+<style>
+
+  
+
+    .fredoka-<font> {
+        font-family: "Fredoka", serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        margin: 10;
+        padding: 0;
+        float: right
+    }
+
+    ul li {
+         margin-right: 20px;
+         font-family: Fredoka, serif;
+         color: #f5f5f5;
+          
+    }
+
+    #MenuTitle {
+        margin-left: 5%;
+        padding-top: 5px;
+        width: 200px;
+        font-family: Fredoka, serif;
+        font-weight: 600;
+        color: #f5f5f5;
+    }
+
+    #Menubar {
+        background-color: #21364f;
+        height: 50px;
+    }
+
+    #MainBody {
+        
+        height: 100vh;
+        width: 100%;
+        background-image: url("Images/BGimg.png");
+        background-size: cover; /* Makes sure it fills the div */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents tiling */
+        
+    }
+
+    #storytextbox {
+        /*float: right;*/
+        position: relative;
+        justify-content: center;
+        width: 95%;
+        height: 90%;
+        background: white;
+        box-shadow: 10px 10px 1px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 20px;
+        overflow: hidden;
+        
+       
+    }
+
+    #storytextbox::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(white, white 3.5vh, #bbb 3.7vh);
+        pointer-events: none;
+    }
+
+        #storytextbox::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 30px;
+            width: 2px;
+            height: 100%;
+            background: #c00; /* Red margin line */
+        }
+
+    textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 18px;
+        line-height: 3.7vh; /* Matching line-height to the background */
+        resize: none;
+        padding: 10px; /* Adding a bit of padding */
+        padding-left: 5%;
+        font-family: "Schoolbell", serif;
+        color: #333;
+        position: relative;
+        z-index: 10;
+        box-sizing: border-box; /* Ensures padding doesn't interfere with size */
+    }
+
+    #BodyTitle {
+        font-family: Fredoka, serif;
+        color: #21364f;
+       /* float: left;*/
+    }
+
+    #contentContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 60px;
+        padding: 20px;
+        width: 90vw;
+        overflow: hidden;
+    }
+
+    #RollButtons {
+        display: flex;
+        flex-direction: column;
+       /* margin-left: 5vw;
+        margin-top: 3vh;*/
+        text-align: center;
+        gap:10px;
+        text-shadow: 1px 1px 0 #f5f5f5, -1px -1px 0 #f5f5f5, 1px -1px 0 #f5f5f5, -1px 1px 0 #f5f5f5;
+    }
+
+    .buttonCategory {
+        font-family: Fredoka, serif;
+        color: #21364f;
+        
+    }
+
+    .buttonroller {
+        text-align: center;
+        margin-left: 3vw;
+        margin-top: 2vh;
+        width: 25vw;
+        height: 7.5vh;
+        border-radius: 10px;
+        border-color: #f5f5f5;
+        box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
+        color: #9e9e9e;
+        font-family: Fredoka, serif;
+        font-size: clamp(12px, 2vw, 18px);
+    }
+
+    #container-textbox{
+        display:flex;
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .button-text {
+        text-align: center;
+
+    }
+
+    .buttonroller:hover {
+        background-color: #cacaca; /* Change to a lighter/different color */
+        color: white;
+        transition: 0.2s ease-in-out; /* Smooth transition */
+    }
+
+    .buttonbox {
+       
+        display: flex;
+       
+    }
+
+    .button-box{
+        display: flex;
+        gap: 20px;
+    }
+
+    #bottombuttons{
+        display:flex;
+        justify-content: center;
+    }
+
+    #finishbutton {
+        width: 10vw;
+        height: 6vh;
+        border-radius: 10px;
+        border-color: #f5f5f5;
+        box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
+        color: #9e9e9e;
+        font-family: Fredoka, serif;
+        font-size: 1.5vw;
+      
+    }
+
+    #helpbutton {
+       
+        width: 10vw;
+        height: 6vh;
+        border-radius: 10px;
+        border-color: #f5f5f5;
+        box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
+        color: #9e9e9e;
+        font-family: Fredoka, serif;
+        font-size: 1.5vw;
+        
+    }
+
+    #btn-publish {
+        width: 10vw;
+        height: 6vh;
+        border-radius: 10px;
+        border-color: #f5f5f5;
+        box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
+        color: #9e9e9e;
+        font-family: Fredoka, serif;
+        font-size: 1.5vw;
+
+    }
+
+    #btn-publish:hover {
+        background-color: #cacaca; /* Change to a lighter/different color */
+        color: white;
+        transition: 0.2s ease-in-out; /* Smooth transition */
+    }
+
+    #finishbutton:hover {
+        background-color: #cacaca; /* Change to a lighter/different color */
+        color: white;
+        transition: 0.2s ease-in-out; /* Smooth transition */
+    }
+
+    #helpbutton:hover {
+        background-color: #cacaca; /* Change to a lighter/different color */
+        color: white;
+        transition: 0.2s ease-in-out; /* Smooth transition */
+    }
+
+    .helpbuttons {
+        font-size: clamp(12px, 2vw, 18px);
+        margin-top: -30px;
+        margin-left: 10px;
+        text-align: left;
+        align-self: flex-start;
+        color: #f9ff00;
+        text-shadow: 1px 1px 0 #21364f, -1px -1px 0 #21364f, 1px -1px 0 #21364f, -1px 1px 0 #21364f;
+    }
+
+    .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1000; /* Ensure it’s above everything */
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 50vw;
+        text-align: center;
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 2vw;
+        cursor: pointer;
+    }
+
+    .modal.show {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .spinner {
+        display: none;
+        width: 15px;
+        height: 15px;
+        border: 3px solid transparent;
+        border-top: 3px solid white; /* Change color as needed */
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin-right: 8px;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .buttonroller {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 20px;
+        
+    }
+    
+
+</style>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Schoolbell&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>Roll-A-Story</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+
+</head>
+
+<body>
+    
+     <div>
+         <div class="modal" id="modal">
+             <div class="modal-content">
+                 <span class="close">&times;</span>
+                 <h2 style="font-family: Fredoka, serif; color:#21364f; font-size: 5vh;">Give Your Story A Title!</h2>
+                 <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                     <input type="text" id="pdfTitle" placeholder="enter a title" style="width: 50%; margin-bottom: 2vh; padding: 1%; border-radius: 10px; font-family: 'Schoolbell', serif; font-size: 3vh;" maxlength="25"/>
+                     <button id="btn-publish">Publish!</button>
+                 </div>
+             </div>
+     </div>
+    
+
+
+    <div id="Menubar">
+        <ul>
+            <li>Library</li>
+            <li>|</li>
+            <li>Learn</li>
+            <li>|</li>
+            <li>Login</li>
+        </ul>
+
+        <h1 id="MenuTitle">Roll-A-Story</h1>
+
+    </div>
+
+    <div id="MainBody">
+
+        <div id="contentContainer">
+
+            <div id="RollButtons">
+
+                <h1 id="BodyTitle">Roll your story elements below and start writing!</h1>
+
+                <div style="display:flex" class="buttonbox">
+                    <h1 class="buttonCategory" >Character</h1>
+                    <button class="buttonroller" id="spinbutton1">
+                        <span class="spinner"></span> <!-- Spinning Wheel -->
+                        <span class="button-text">Click to roll a character!</span>
+                    </button>
+                </div>
+
+                    <h1 class="helpbuttons">Click for help</h1>
+                               
+
+                <div style="display:flex" class="buttonbox">
+                    <h1 class="buttonCategory">Setting  </h1>
+                    <button id="spinbutton2" class="buttonroller" style="margin-left:auto;">
+                        <span class="spinner"></span>
+                        <span class="button-text">Click to roll a setting!</span>
+                     </button>
+                </div>
+
+                <h1 class="helpbuttons">click for help</h1>
+
+                <div style="display:flex" class="buttonbox">
+                    <h1 class="buttonCategory">Conflict </h1>
+                    <button id="spinbutton3" class="buttonroller" style="margin-left:auto;">
+                        <span class="spinner"></span>
+                        <span class="button-text">Click to roll a conflict!</span>
+                    </button>
+                </div>
+
+                <h1 class="helpbuttons">click for help</h1>
+
+                <div style="display:flex" class="buttonbox">
+                    <h1 class="buttonCategory">Theme    </h1>
+                    <button id="spinbutton4" class="buttonroller" style="margin-left:auto;">
+                        <span class="spinner"></span>
+                        <span class="button-text">Click to roll a theme!</span>
+                    </button>
+                </div>
+
+                <h1 class="helpbuttons">click for help</h1>
+
+            </div>
+
+            <div id="container-textbox">
+                <div id="storytextbox">
+                    <textarea id="textarea" placeholder="Once upon a time..."></textarea>
+                </div>
+
+                <div id="bottombuttons">
+
+                    <div class="button-box">
+                        <button id="helpbutton">I need help</button>
+                        <button id="finishbutton">Finished</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <script>
+        document.getElementById("btn-publish").addEventListener("click", function () {
+            console.log("Button clicked!");
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Get the title and body text
+            const title = document.getElementById("pdfTitle").value || "Untitled";
+            const text = document.getElementById("textarea").value;
+
+            // Set font size for the title
+            doc.setFontSize(18);
+            const pageWidth = doc.internal.pageSize.getWidth();  // Get page width
+            const titleX = pageWidth / 2;  // Center alignment
+            const titleY = 20;  // Y position for title
+
+            // Add title text (centered)
+            doc.text(title, titleX, titleY, { align: "center" });
+
+            // Set font size for body text
+            doc.setFontSize(12);
+
+            // Add some vertical space between the title and body text
+            const textY = titleY + 15;  // Position body text 15 units below the title
+
+            // Only generate the body text if it's not empty
+            if (text) {
+                // Add body text (wrapped to fit within the page)
+                doc.text(text, 10, textY, { maxWidth: 180 });
+
+                // Save the PDF with the title as the file name
+                doc.save(title + ".pdf");
+
+                // Close the modal
+                document.getElementById("titleModal").style.display = "none";
+            } else {
+                alert("Your story is blank! Please enter some text to generate the PDF.");
+                document.getElementById("titleModal").style.display = "none";
+            }
+        });
+        
+        const modal = document.getElementById("modal");
+        const openBtn = document.getElementById("finishbutton");
+        const closeBtn = document.querySelector(".close");
+
+        openBtn.addEventListener("click", () => {
+            modal.classList.add("show");
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.classList.remove("show");
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.classList.remove("show");
+            }
+        });
+
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            // Define different word arrays for each button
+            const wordSets = {
+                "spinbutton1": [
+                    "A kid detective with a pet parrot",
+                    "A talking cat who wants to be famous",
+                    "A robot who loves baking",
+                    "A time traveler stuck in the past",
+                    "A mischievous fairy who lost their wings",
+                    "A ghost who doesn’t realize they’re a ghost",
+                    "A pirate who’s afraid of water",
+                    "A scientist who accidentally shrinks themselves",
+                    "A superhero who keeps messing up",
+                    "A kid who can talk to insects",
+                    "A lonely vampire who just wants friends",
+                    "A race car driver who never learned to ride a bike",
+                    "A video game character who comes to life",
+                    "A zookeeper who can understand animals",
+                    "A student who discovers they are royalty",
+                    "A knight who is allergic to their own armor",
+                    "An alien who crashes their spaceship at a summer camp",
+                    "A mermaid who wants to explore space",
+                    "A talking snowman who never melts",
+                    "A dog who secretly writes books",
+                    "A chef who can make food come to life",
+                    "A kid who finds a treasure map in their backyard",
+                    "A young inventor whose gadgets always backfire",
+                    "A famous magician who loses their magic",
+                    "A librarian who can jump into books",
+                    "Alien explorer",
+                    "Evil scientist",
+                    "Shy wizard",
+                    "Ghost detective",
+                    "Brave lion",
+                    "Dragon trainer",
+                    "Super spy",
+                    "Treasure hunter",
+                    "Robot butler",
+                    "Time traveler",
+                    "Mischievous elf",
+                    "Clumsy superhero",
+                    "Pirate captain",
+                    "Monster slayer",
+                    "Wild cowboy",
+                    "Lost prince",
+                    "Jungle guide",
+                    "Space pilot",
+                    "Talking dog",
+                    "Baker wizard",
+                    "Dinosaur wrangler",
+                    "Vampire hunter",
+                    "Secret agent",
+                    "Magician’s apprentice",
+                    "Street artist"
+                ],
+                "spinbutton2": [
+                    "A sunken pirate ship",
+                    "A secret underground lab",
+                    "A futuristic amusement park",
+                    "A tiny town where everyone is only six inches tall",
+                    "A massive library with endless bookshelves",
+                    "A floating island in the sky",
+                    "A spooky abandoned hospital",
+                    "A jungle filled with dinosaurs",
+                    "A city that only exists at night",
+                    "A castle made entirely of candy",
+                    "A magical train that never stops moving",
+                    "A haunted carnival",
+                    "A spaceship lost in the galaxy",
+                    "A deep-sea research station",
+                    "A farm where animals can talk",
+                    "A kingdom made of glass",
+                    "A video game world that glitches",
+                    "A summer camp where the counselors are monsters",
+                    "A frozen tundra with hidden secrets",
+                    "A time-traveling museum",
+                    "A desert full of hidden treasures",
+                    "A futuristic school for superheroes",
+                    "A zoo with mythical creatures",
+                    "A race track where the cars drive themselves",
+                    "A town where it rains candy",
+                    "Abandoned castle",
+                    "Magic forest",
+                    "Haunted house",
+                    "Alien planet",
+                    "Secret lair",
+                    "Futuristic city",
+                    "Desert ruins",
+                    "Frozen tundra",
+                    "Underwater city",
+                    "Ancient temple",
+                    "Space station",
+                    "Amusement park",
+                    "Wilderness camp",
+                    "Sky palace",
+                    "Enchanted garden",
+                    "Volcanic island",
+                    "Old mansion",
+                    "Pirate ship",
+                    "Crystal cave",
+                    "Monster city",
+                    "Mystical library",
+                    "Hidden cave",
+                    "Ice palace",
+                    "Magic school",
+                    "Abandoned factory"
+                ],
+                "spinbutton3": [
+                    "The main character wakes up with no memory of who they are",
+                    "A pet goes missing, and strange clues appear",
+                    "A villain swaps bodies with the hero",
+                    "A character is framed for a crime they didn’t commit",
+                    "A long-lost treasure map is found, but someone else wants it too",
+                    "A machine goes haywire and takes over the town",
+                    "A mysterious package arrives with no sender",
+                    "A best friend starts acting suspicious",
+                    "A strange creature is found in the backyard",
+                    "A magical spell goes terribly wrong",
+                    "A science experiment creates an unexpected result",
+                    "A school field trip takes a very unexpected turn",
+                    "A character discovers a hidden door in their house",
+                    "A robot starts developing human emotions",
+                    "A character learns they are the only one who can stop a disaster",
+                    "A haunted object starts causing trouble",
+                    "A person gets sucked into a book and can’t get out",
+                    "The main character must solve a riddle before time runs out",
+                    "A time traveler changes history and must fix it",
+                    "A villain turns good but no one believes them",
+                    "A talent show goes terribly wrong",
+                    "A character discovers their reflection is acting on its own",
+                    "A letter arrives from the future",
+                    "A storm strands a group of people in a mysterious location",
+                    "A competition turns into a life-or-death challenge",
+                    "Treasure is stolen by a rival",
+                    "Main character loses their memory",
+                    "Time travel causes paradoxes",
+                    "Robot begins to rebel against humans",
+                    "Villain turns out to be an evil twin",
+                    "Main character must face their greatest fear",
+                    "Hostages are taken by enemies",
+                    "Aliens invade the planet",
+                    "Monsters are terrorizing the town",
+                    "A magical spell goes horribly wrong",
+                    "A treasure map is stolen",
+                    "A friend mysteriously disappears",
+                    "A corrupt leader takes over the town",
+                    "The environment becomes dangerous",
+                    "A family member is cursed",
+                    "Superpowers begin to fade away",
+                    "A rival group tries to sabotage your mission",
+                    "Trapped in an escape room",
+                    "A mysterious letter arrives with no sender",
+                    "A dangerous mission must be completed",
+                    "A mystery that needs solving",
+                    "Undead creatures are rising from the grave",
+                    "An ancient prophecy comes true",
+                    "A spaceship is being chased through space",
+                    "A race against time to stop disaster"
+                ],
+                "spinbutton4": [
+                    "Friendship can come from unexpected places",
+                    "Courage means doing the right thing even when it's hard",
+                    "Even small actions can make a big difference",
+                    "Being different is a strength, not a weakness",
+                    "The truth will always come out in the end",
+                    "Helping others can lead to unexpected rewards",
+                    "Never judge someone before you truly know them",
+                    "Imagination can turn the ordinary into something magical",
+                    "Mistakes are just a part of learning",
+                    "Curiosity can lead to great discoveries",
+                    "Greed can lead to trouble",
+                    "Teamwork is the key to success",
+                    "Change is scary, but it can also be exciting",
+                    "Family isn’t just about who you’re related to",
+                    "It’s important to stand up for what you believe in",
+                    "Kindness can change the world",
+                    "Sometimes the biggest adventures start by accident",
+                    "You don’t have to be the strongest to be a hero",
+                    "Hard work and determination can overcome obstacles",
+                    "Things aren’t always what they seem",
+                    "Fear can hold you back, but bravery can push you forward",
+                    "You can always find light in the darkest times",
+                    "Everyone has something special about them",
+                    "Honesty is the best policy",
+                    "Sometimes, losing something helps you realize what really matters",
+                    "Bravery",
+                    "Teamwork",
+                    "Forgiveness",
+                    "Friendship",
+                    "Justice",
+                    "Loyalty",
+                    "Curiosity",
+                    "Discovery",
+                    "Trust",
+                    "Hope",
+                    "Greed",
+                    "Sacrifice",
+                    "Change",
+                    "Freedom",
+                    "Imagination",
+                    "Fear",
+                    "Revenge",
+                    "Truth",
+                    "Dreams",
+                    "Perseverance",
+                    "Love",
+                    "Patience",
+                    "Secrets",
+                    "Self-discovery",
+                    "Redemption"
+                ]
+            };
+
+            // Select all buttons with class "buttonroller"
+            document.querySelectorAll(".buttonroller").forEach(button => {
+                const buttonText = button.querySelector(".button-text");
+                const spinner = button.querySelector(".spinner");
+                const buttonId = button.id; // Get button's ID
+                const words = wordSets[buttonId]; // Get corresponding words
+
+                button.addEventListener("click", function () {
+                    if (button.dataset.locked) return; // Prevent further clicks
+
+                    // Show spinner and hide text
+                    spinner.style.display = "inline-block";
+                    buttonText.style.visibility = "hidden";
+
+                    setTimeout(() => {
+                        // Hide spinner, show new text, lock button
+                        spinner.style.display = "none";
+                        buttonText.textContent = words[Math.floor(Math.random() * words.length)];
+                        buttonText.style.visibility = "visible";
+                        let spinnerText = buttonText.textContent;
+                        
+
+                        // Lock button to prevent further spins
+                        button.dataset.locked = "true";
+
+                        // Change button color to indicate selection (modify as needed)
+                        button.style.backgroundColor = "#f9ff00"; // Green
+                        button.style.color = "#415a77";
+                    }, 1000); // Simulate spinning for 1 second
+
+
+                });
+            });
+        });
+
+        function loadspinner() {
+            let spinner = localStorage.getItem("spinnerText");
+            if (spinner) {
+                document.getElementById
+            }
+        }
+    
+    </script>
+</body>
+
+
+</html>
